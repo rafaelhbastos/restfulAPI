@@ -40,9 +40,9 @@ router.post('/signup', (req, res, next) => {
                   error: err
                 });
               });
-          }
+          };
         });
-      }
+      };
     });
 });
 
@@ -86,13 +86,13 @@ router.post('/login', (req, res, next) => {
       res.status(500).json({
         error: err
       });
-    })
+    });
 });
 
 router.delete('/:userId', (req, res, next) => {
   User.remove({ _id: req.params.userId })
     .exec()
-    .then(result => {
+    .then(() => {
       res.status(200).json({
         message: "User deleted"
       });
