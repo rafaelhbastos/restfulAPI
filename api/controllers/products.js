@@ -25,7 +25,6 @@ exports.products_get_all = (req, res, next) => {
         res.status(200).json(response);
       })
       .catch(err => {
-        console.log(err);
         res.status(500).json({
           error: err
         });
@@ -33,7 +32,6 @@ exports.products_get_all = (req, res, next) => {
   };
 
   exports.products_create_products = (req, res, next) => {
-    console.log(req.file);
     const product = new Product({
       _id: new mongoose.Types.ObjectId(),
       name: req.body.name,
@@ -55,7 +53,6 @@ exports.products_get_all = (req, res, next) => {
       });
     })
       .catch(err => {
-        console.log(err);
         res.status(500).json({
           error: err
         });
@@ -68,7 +65,6 @@ exports.products_get_product = (req, res, next) => {
       .select('name price _id productImage')
       .exec()
       .then(doc => {
-        console.log("From databse", doc);
         if (doc) {
           res.status(200).json({
             peoduct: doc,
@@ -82,7 +78,6 @@ exports.products_get_product = (req, res, next) => {
         }
       })
       .catch(err => {
-        console.log(err);
         res.status(500).json({ error: err });
       });
   
@@ -106,9 +101,8 @@ exports.products_get_product = (req, res, next) => {
         });
       })
       .catch(err => {
-        console.log(err);
         res.status(500).json({ error: err });
-      })
+      });
   };
 
   exports.products_delete_product = (req, res, next) => {
@@ -126,7 +120,6 @@ exports.products_get_product = (req, res, next) => {
         });
       })
       .catch(err => {
-        console.log(err);
         res.status(500).json({ error: err });
-      })
+      });
   };

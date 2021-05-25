@@ -20,7 +20,7 @@ exports.orders_get_all = (req, res, next) => {
                 type: 'GET',
                 url: 'http://127.0.0.1:3000/orders/' + doc._id
               }
-            }
+            };
           })
         });
       })
@@ -38,7 +38,7 @@ exports.orders_get_all = (req, res, next) => {
           return res.status(404).json({
             message: 'Product Not Found'
           });
-        }
+        };
         const order = new Order({
           _id: mongoose.Types.ObjectId(),
           quantity: req.body.quantity,
@@ -89,13 +89,13 @@ exports.orders_get_all = (req, res, next) => {
         res.status(500).json({
           error: err
         });
-      })
+      });
   };
 
   exports.orders_delete_order = (req, res, next) => {
     Order.remove({ _id: req.params.orderId })
       .exec()
-      .then(result => {
+      .then(() => {
         res.status(200).json({
           message: 'Order deleted',
           request: {
@@ -109,5 +109,5 @@ exports.orders_get_all = (req, res, next) => {
         res.status(500).json({
           error: err
         });
-      })
+      });
   };

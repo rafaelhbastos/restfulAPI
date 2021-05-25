@@ -26,14 +26,12 @@ exports.user_signup = (req, res, next) => {
               });
               user
                 .save()
-                .then(result => {
-                  console.log(result);
+                .then(() => {
                   res.status(200).json({
                     message: "User created"
                   });
                 })
                 .catch(err => {
-                  console.log(err);
                   res.status(500).json({
                     error: err
                   });
@@ -80,7 +78,6 @@ exports.user_signup = (req, res, next) => {
         });
       })
       .catch(err => {
-        console.log(err);
         res.status(500).json({
           error: err
         });
@@ -96,7 +93,6 @@ exports.user_signup = (req, res, next) => {
         });
       })
       .catch(err => {
-        console.log(err);
         res.status(500).json({
           error: err
         });
